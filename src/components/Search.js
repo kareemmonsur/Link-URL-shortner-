@@ -4,7 +4,6 @@ import shrtcode from '../api/shrtcode'
 
 
 
-
 const Search = () => {
     const[link, setLink] = useState('');
     const[short, setShort] = useState('');
@@ -42,7 +41,7 @@ const Search = () => {
             value={link}
             onChange={(e) => setLink(e.target.value)}
             /> 
-            {!isLoading && (
+            {isLoading && (
               <Button 
                 style={{marginBottom: '20px'}}
                 onClick={(e) => handleSubmit(e)}
@@ -52,14 +51,10 @@ const Search = () => {
                   Submit
               </Button>
             )}
-            {isLoading && <LinearProgress/>}
+            {!isLoading && <LinearProgress/>}
         </form>  
         {short && <div> Short Link: {short}</div>}
-        
-        
-        
-     
-      
+            
     </>
   )
 }
