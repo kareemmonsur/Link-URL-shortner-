@@ -1,20 +1,21 @@
 import { TextField, Button, LinearProgress } from '@material-ui/core'
 import React, { useState } from 'react'
 import shrtcode from '../api/shrtcode'
+// import React, { Suspense } from 'react'
 
 
 
 const Search = () => {
     const[link, setLink] = useState('');
     const[short, setShort] = useState('');
-    const[isLoading, setIsLoading] = useState('false');
+    const[isLoading, setIsLoading] = useState(false);
     
 
     const handleSubmit = (e) => {
       e.preventDefault();
       getLink();
       setLink('');
-      setIsLoading(!isLoading)
+      setIsLoading(true)
       
     };
 
@@ -41,7 +42,7 @@ const Search = () => {
             value={link}
             onChange={(e) => setLink(e.target.value)}
             /> 
-            {isLoading && (
+            {!isLoading && (
               <Button 
                 style={{marginBottom: '20px'}}
                 onClick={(e) => handleSubmit(e)}
@@ -51,7 +52,19 @@ const Search = () => {
                   Submit
               </Button>
             )}
-            {!isLoading && <LinearProgress/>}
+            {isLoading && <LinearProgress/>}
+
+            {/* <Suspense fallback={<LinearProgress />}>
+            
+              <Button 
+                style={{marginBottom: '20px'}}
+                onClick={(e) => handleSubmit(e)}
+                variant='contained' 
+                color='primary'
+                >
+                  Submit
+              </Button>
+            </Suspense> */}
         </form>  
         {short && <div> Short Link: {short}</div>}
             

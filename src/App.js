@@ -3,6 +3,7 @@ import Search from './components/Search';
 import './App.css';
 import TopMessage from './components/TopMessage';
 
+
 function App() {
   return (
     <Grid 
@@ -13,9 +14,7 @@ function App() {
     alignItems='center'
     >
       <TopMessage/>
-      <Search/>
-
-      
+      <Search/>  
     </Grid>
   );
 }
